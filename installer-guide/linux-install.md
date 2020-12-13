@@ -141,10 +141,11 @@ In terminal:
 5. then `cd` to `/OpenCore/Utilities/macrecovery/` and you should get to a `.dmg` and `.chunklist` files
    1. mount your USB partition with `udisksctl` (`udisksctl mount -b /dev/<your USB partition block>`, no sudo required in most cases) or with `mount` (`sudo mount /dev/<your USB partition block> /where/your/mount/stuff`, sudo is required)
    2. `cd` to your USB drive and `mkdir com.apple.recovery.boot` in the root of your FAT32 USB partition
-   3. download `dmg2img` (available on most distros)
-   4. run `dmg2img -l BaseSystem.dmg` and determine which partition has `disk image` property
+   3. now `cp` or `rsync` both `BaseSystem.dmg` and `BaseSystem.chunklist` into `com.apple.recovery.boot` folder.
+   4. download `dmg2img` (available on most distros)
+   5. run `dmg2img -l BaseSystem.dmg` and determine which partition has `disk image` property
       ![](../images/installer-guide/linux-install-md/unknown-20.png)
-   5. run `dmg2img -p <the partition number> -i BaseSystem.dmg -o <your 3GB+ partition block>` to extract and write the recovery image to the partition disk
+   6. run `sudo dmg2img -p <the partition number> -i BaseSystem.dmg -o <your 3GB+ partition block>` to extract and write the recovery image to the partition disk
       * It will take some time. A LOT if you're using a slow USB (took me about less than 5 minutes with a fast USB2.0 drive).
       ![](../images/installer-guide/linux-install-md/unknown-21.png)
 
